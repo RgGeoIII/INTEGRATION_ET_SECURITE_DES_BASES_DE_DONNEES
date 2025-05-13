@@ -1,81 +1,56 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paiement - Crocogym</title>
-  <link rel="stylesheet" href="../css/paiement.css">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
-</head>
-<body>
-<header class="header">
-  <div class="logo">CROCOGYM 🐊</div>
-  <nav>
-    <a href="../index.html">Accueil</a>
-    <a href="profil.html">Mon compte</a>
-    <a href="panier.html">Panier</a>
-  </nav>
-</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement - Crocogym</title>
+    <link rel="stylesheet" href="../css/paiement.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+    <script src="../javascript/paiement.js"></script>
+  </head>
+  <body>
+  <header class="header">
+    <div class="logo">CROCOGYM 🐊</div>
+    <nav>
+      <a href="../index.html">Accueil</a>
+      <a href="profil.html">Mon compte</a>
+      <a href="panier.html">Panier</a>
+    </nav>
+  </header>
 
-<main class="paiement-container">
-  <h1>Finaliser le paiement</h1>
+  <main class="paiement-container">
+    <h1>Finaliser le paiement</h1>
 
-  <section id="recapitulatif">
-    <h2>Récapitulatif de la commande</h2>
-    <div id="commande-items"></div>
-    <p><strong>Total : <span id="total">0,00€</span></strong></p>
-  </section>
+    <section id="recapitulatif">
+      <h2>Récapitulatif de la commande</h2>
+      <div id="commande-items"></div>
+      <p><strong>Total : <span id="total">0,00€</span></strong></p>
+    </section>
 
-  <section id="formulaire-paiement">
-    <h2>Informations de paiement</h2>
-    <form id="form-paiement">
-      <label>Nom sur la carte :</label>
-      <input type="text" name="nom" required>
+    <section id="formulaire-paiement">
+      <h2>Informations de paiement</h2>
+      <form id="form-paiement">
+        <label>Nom sur la carte :</label>
+        <input type="text" name="nom" required>
 
-      <label>Numéro de carte :</label>
-      <input type="text" name="carte" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required>
+        <label>Numéro de carte :</label>
+        <input type="text" name="carte" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required>
 
-      <label>Date d'expiration :</label>
-      <input type="text" name="expiration" placeholder="MM/AA" maxlength="5" required>
+        <label>Date d'expiration :</label>
+        <input type="text" name="expiration" placeholder="MM/AA" maxlength="5" required>
 
-      <label>Cryptogramme visuel :</label>
-      <input type="text" name="cvv" maxlength="3" required>
+        <label>Cryptogramme visuel :</label>
+        <input type="text" name="cvv" maxlength="3" required>
 
-      <button type="submit" class="btn-valider">Payer maintenant</button>
-    </form>
-  </section>
-</main>
+        <button type="submit" class="btn-valider">Payer maintenant</button>
+      </form>
+    </section>
+  </main>
 
-<footer>
-  <p>&copy; 2025 Crocogym. Tous droits écailleusement réservés 🐊.</p>
-</footer>
+  <footer>
+    <p>&copy; 2025 Crocogym. Tous droits écailleusement réservés 🐊.</p>
+  </footer>
 
-<script>
-  function chargerCommande() {
-    const panier = JSON.parse(localStorage.getItem("panier")) || [];
-    const itemsContainer = document.getElementById("commande-items");
-    const totalElement = document.getElementById("total");
-    let total = 0;
 
-    itemsContainer.innerHTML = "";
-    panier.forEach(item => {
-      const ligne = document.createElement("p");
-      ligne.textContent = `${item.nom} x ${item.quantite} - ${(item.prix * item.quantite).toFixed(2)}€`;
-      itemsContainer.appendChild(ligne);
-      total += item.prix * item.quantite;
-    });
-
-    totalElement.textContent = total.toFixed(2).replace('.', ',') + "€";
-  }
-
-  document.getElementById("form-paiement").addEventListener("submit", function(e) {
-    e.preventDefault();
-    alert("Paiement effectué avec succès ! Merci pour votre inscription.");
-    localStorage.removeItem("panier");
-    window.location.href = "../index.html";
-  });
-
-  window.onload = chargerCommande;
-</script>
-</body>
+  </body>
 </html>
