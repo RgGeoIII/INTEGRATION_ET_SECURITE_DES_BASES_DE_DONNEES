@@ -1,0 +1,131 @@
+/* BASE */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0d0d0d;
+    font-family: 'Roboto', sans-serif;
+    color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* RETOUR ACCUEIL */
+.retour-accueil {
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.retour-accueil a {
+    color: #d4af37;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.retour-accueil a:hover {
+    color: #ffffff;
+}
+
+/* CONTAINER */
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* FORMULAIRE */
+.form-box {
+    background-color: #2e4b47;
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+    animation: fadeIn 0.5s ease;
+    text-align: center;
+}
+
+.logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.slogan {
+    font-size: 0.95rem;
+    color: #d4af37;
+    margin-bottom: 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    padding: 14px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #000;
+}
+
+form button {
+    padding: 14px;
+    background-color: #d4af37;
+    color: #0d0d0d;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+form button:hover {
+    background-color: #e0c356;
+}
+
+/* SWITCH LIEN */
+.switch {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.switch a {
+    color: #f0d654;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.switch a:hover {
+    color: #ffffff;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

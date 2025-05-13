@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement - Crocogym</title>
+    <link rel="stylesheet" href="../css/paiement.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+    <script src="../javascript/paiement.js"></script>
+  </head>
+  <body>
+  <header class="header">
+    <div class="logo">CROCOGYM 🐊</div>
+    <nav>
+      <a href="../index.html">Accueil</a>
+      <a href="profil.html">Mon compte</a>
+      <a href="panier.html">Panier</a>
+    </nav>
+  </header>
+
+  <main class="paiement-container">
+    <h1>Finaliser le paiement</h1>
+
+    <section id="recapitulatif">
+      <h2>Récapitulatif de la commande</h2>
+      <div id="commande-items"></div>
+      <p><strong>Total : <span id="total">0,00€</span></strong></p>
+    </section>
+
+    <section id="formulaire-paiement">
+      <h2>Informations de paiement</h2>
+      <form id="form-paiement">
+        <label>Nom sur la carte :</label>
+        <input type="text" name="nom" required>
+
+        <label>Numéro de carte :</label>
+        <input type="text" name="carte" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required>
+
+        <label>Date d'expiration :</label>
+        <input type="text" name="expiration" placeholder="MM/AA" maxlength="5" required>
+
+        <label>Cryptogramme visuel :</label>
+        <input type="text" name="cvv" maxlength="3" required>
+
+        <button type="submit" class="btn-valider">Payer maintenant</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Crocogym. Tous droits écailleusement réservés 🐊.</p>
+  </footer>
+
+
+  </body>
+</html>

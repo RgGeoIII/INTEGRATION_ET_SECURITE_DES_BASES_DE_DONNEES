@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    background-color: #1b1b1b;
+    color: #fff;
+}
+
+.sidebar {
+    width: 220px;
+    background: #084c4f;
+    padding: 20px;
+    height: 100vh;
+}
+
+.sidebar h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: #fdd835;
+}
+
+.sidebar nav a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.sidebar nav a:hover {
+    background-color: #0b5e61;
+}
+
+main {
+    padding: 40px;
+    flex-grow: 1;
+}
