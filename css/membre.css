@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #0d0d0d;
+    color: #f5f5f5;
+    display: flex;
+    min-height: 100vh;
+}
+
+.dashboard {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #121212;
+    padding: 30px 20px;
+}
+
+.sidebar h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: #d4af37;
+    margin-bottom: 30px;
+}
+
+.sidebar nav a {
+    display: block;
+    color: #f5f5f5;
+    padding: 12px 0;
+    text-decoration: none;
+    font-weight: bold;
+    border-left: 4px solid transparent;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+}
+
+.sidebar nav a.active,
+.sidebar nav a:hover {
+    color: #d4af37;
+    border-left: 4px solid #d4af37;
+    background-color: #1f1f1f;
+    padding-left: 10px;
+}
+
+.sidebar hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 20px 0;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 40px;
+}
+
+.welcome-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #203a43, #0f2027);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.welcome-section .text h1 {
+    font-size: 32px;
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.welcome-section .highlight {
+    color: #ffd700;
+}
+
+.welcome-section .text p {
+    margin-top: 10px;
+    color: #ddd;
+    font-size: 0.95rem;
+}
+
+.welcome-section img {
+    max-width: 180px;
+    border-radius: 10px;
+}
+
+.stats h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #d4af37;
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;
+    min-width: 160px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card .label {
+    font-size: 14px;
+    color: #bbb;
+    margin-bottom: 5px;
+}
+
+.card .number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #d4af37;
+}
+
+.card .unit {
+    font-size: 14px;
+    color: #999;
+}
+
+.link {
+    display: inline-block;
+    margin-top: 30px;
+    text-decoration: none;
+    color: #6b00b6;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.link:hover {
+    color: #a64dff;
+}
