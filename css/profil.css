@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #0d0d0d;
+    color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.profile-container {
+    max-width: 500px;
+    width: 90%;
+    padding: 30px;
+    background-color: #2f4f4f;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.profile-container h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: #f5f5f5;
+}
+
+.slogan {
+    color: #d4af37;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.profile-card {
+    background-color: #1f2f2f;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.profile-card h2 {
+    color: #d4af37;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.profile-card p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.profile-actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    text-decoration: none;
+    color: #0d0d0d;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    text-align: center;
+    width: 45%;
+}
+
+.btn.edit {
+    background-color: #d4af37;
+}
+
+.btn.edit:hover {
+    background-color: #c09e32;
+}
+
+.btn.delete {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.btn.delete:hover {
+    background-color: #e03a3a;
+}

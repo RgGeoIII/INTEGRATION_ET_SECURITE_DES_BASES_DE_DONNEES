@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifs - Crocogym</title>
+    <link rel="stylesheet" href="../css/tarifs.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <script src="../javascript/tarifs.js"></script>
+    <header>
+      <div class="logo">Crocogym 🐊</div>
+      <nav>
+      <a href="../index.html">Accueil</a>
+      <a href="../html/panier.html">Panier</a>
+      <a href="connexion.html">Connexion</a>
+      <a href="inscription.html">S'inscrire</a>
+      </nav>
+    </header>
+
+    <section class="hero-tarifs">
+      <h2>Choisis ton niveau d'écaille</h2>
+      <p class="subtext">Plus t'as d'écailles, plus t'impressionnes les canailles </p>
+    </section>
+
+    <section class="abos-container">
+      <div class="abo-card">
+        <h3>Écaille de Bronze</h3>
+        <p class="price">24,99€ / mois</p>
+        <ul>
+        <li>Accès en heures creuses</li>
+        <li>Machines de base</li>
+        <li>Pas d'engagement</li>
+        </ul>
+        <button class="btn" onclick="ajouterAuPanier('Écaille de Bronze', 24.99)">Choisir</button>
+
+      </div>
+
+      <div class="abo-card highlight">
+        <h3>Écaille d'Argent</h3>
+        <p class="price">34,99€ / mois</p>
+        <ul>
+        <li>Accès complet 7j/7</li>
+        <li>Cours collectifs inclus</li>
+        <li>Application Crocogym</li>
+        </ul>
+        <button class="btn" onclick="ajouterAuPanier('Écaille de dArgent', 34.99)">Choisir</button>
+
+      </div>
+
+      <div class="abo-card">
+        <h3>Écaille d'Or</h3>
+        <p class="price">49,99€ / mois</p>
+        <ul>
+        <li>Coaching personnalisé</li>
+        <li>Goodies Croco 🐊 offerts</li>
+        <li>Accès VIP & massage</li>
+        <li>Cirage & manicure des écailles offerte</li>
+        </ul>
+        <button class="btn" onclick="ajouterAuPanier('Écaille d\'Or', 49.99)">Choisir</button>
+      </div>
+    </section>
+
+    <section class="section-compare">
+      <h2>Compare les formules</h2>
+      <table>
+        <thead>
+          <tr>
+          <th>Avantages</th>
+          <th>Bronze</th>
+          <th>Argent</th>
+          <th>Or</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Accès 24h/24</td>
+            <td>✖️</td>
+            <td>✅</td>
+            <td>✅</td>
+          </tr>
+          <tr>
+            <td>Cours collectifs</td>
+            <td>✖️</td>
+            <td>✅</td>
+            <td>✅</td>
+          </tr>
+          <tr>
+            <td>Coach perso</td>
+            <td>✖️</td>
+            <td>✖️</td>
+            <td>✅</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Crocogym. Tous droits écailleusement réservés 🐊.</p>
+    </footer>
+
+  </body>
+</html>
