@@ -1,8 +1,8 @@
 {
-  "name": "${PROJECT_NAME}",
+  "name": "Integration et securite des bases de donnees",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "Frontend/javascript/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

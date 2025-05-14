@@ -19,7 +19,7 @@ document.getElementById("form-paiement").addEventListener("submit", function(e) 
     e.preventDefault();
     alert("Paiement effectué avec succès ! Merci pour votre inscription.");
     localStorage.removeItem("panier");
-    window.location.href = "../index.html";
+    window.location.href = "../../index.html";
 });
 
 window.onload = chargerCommande;
