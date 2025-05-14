@@ -1,3 +1,4 @@
+// backend/index.js
 require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql2/promise');
@@ -29,23 +30,31 @@ function authenticateToken(req, res, next) {
     });
 }
 
-// 📩 Route d'inscription
+// Inscription avec création du profil par défaut
 app.post('/api/register', async (req, res) => {
-    const { prenom, nom, email, password, formule } = req.body;
+    const { prenom, nom, email, password, date_naissance, genre, avatar_url } = req.body;
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-        await db.query(
-            'INSERT INTO utilisateurs (prenom, nom, email, mot_de_passe, formule) VALUES (?, ?, ?, ?, ?)',
-            [prenom, nom, email, hashedPassword, formule]
+        const [result] = await db.query(
+            'INSERT INTO utilisateurs (prenom, nom, email, mot_de_passe) VALUES (?, ?, ?, ?)',
+            [prenom, nom, email, hashedPassword]
         );
-        res.status(201).json({ message: 'Utilisateur créé avec succès' });
+
+        const utilisateur_id = result.insertId;
+
+        await db.query(
+            'INSERT INTO profils (utilisateur_id, date_naissance, genre, avatar_url) VALUES (?, ?, ?, ?)',
+            [utilisateur_id, date_naissance, genre, avatar_url]
+        );
+
+        res.status(201).json({ message: 'Utilisateur et profil créés avec succès' });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Erreur lors de la création du compte' });
     }
 });
 
-// 🔐 Route de connexion
+// Connexion
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -58,7 +67,7 @@ app.post('/api/login', async (req, res) => {
         if (!isMatch) return res.status(401).json({ error: 'Mot de passe incorrect' });
 
         const token = jwt.sign(
-            { email: user.email, role: user.role || 'user' },
+            { id: user.id, email: user.email, role: user.type_utilisateur },
             process.env.JWT_SECRET,
             { expiresIn: '2h' }
         );
@@ -70,22 +79,22 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
-// 👤 Route protégée : profil utilisateur
+// Récupération du profil de l'utilisateur
 app.get('/api/profil', authenticateToken, async (req, res) => {
     try {
-        const [rows] = await db.query(
-            'SELECT prenom, nom, email, formule FROM utilisateurs WHERE email = ?',
-            [req.user.email]
+        const [utilisateur] = await db.query(
+            'SELECT u.id, u.prenom, u.nom, u.email, u.type_utilisateur, p.date_naissance, p.genre, p.avatar_url FROM utilisateurs u JOIN profils p ON u.id = p.utilisateur_id WHERE u.id = ?',
+            [req.user.id]
         );
-        res.json(rows[0]);
+        res.json(utilisateur[0]);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Erreur lors de la récupération du profil' });
     }
 });
 
-// 🚀 Lancer le serveur
+// Lancer le serveur
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`✅ Serveur backend démarré sur le port ${PORT}`);
+    console.log(`\u2705 Serveur backend démarré sur le port ${PORT}`);
 });
