@@ -14,11 +14,11 @@ Développer une application sécurisée de gestion d'abonnements à une salle de
 
 ### 🖥️ 3 Machines Virtuelles (VM)
 
-| VM             | Rôle                        | Adresse IP         |
-|----------------|-----------------------------|---------------------|
-| `2301 (Lamp)`  | Base de données (MySQL)     | `192.168.4.9`       |
-| `2302 (BackendAPI)` | Backend Node.js          | `192.168.4.8`       |
-| `2303 (CrocoGym)`   | Frontend (HTML/CSS)      | `192.168.4.7`       |
+| VM     | Rôle                     | Adresse IP         |
+|--------|--------------------------|--------------------|
+| `2301` | Base de données (MySQL)  | `192.168.4.9`      |
+| `2302` | Backend Node.js          | `192.168.4.8`      |
+| `2303` | Frontend (HTML/CSS)      | `192.168.4.7`      |
 
 ---
 
@@ -59,7 +59,7 @@ Développer une application sécurisée de gestion d'abonnements à une salle de
 
 ## 🚀 Lancer le projet
 
-### 1. 🛠️ Backend (sur VM 2302)
+### 1. 🛠️ Backend
 
 ```bash
 cd backend
@@ -67,7 +67,7 @@ npm install
 node index.js
 ```
 
-### 1. 🛠️ FrontEnd (sur VM 2303)
+### 1. 🛠️ FrontEnd
 
 ```bash
 cd <repertoire/vers/frontend>
