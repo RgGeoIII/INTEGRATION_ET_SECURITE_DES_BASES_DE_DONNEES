@@ -1,6 +1,4 @@
-# 🐊 CrocoGym — Intégration et Sécurité des Bases de Données
-
-Projet réalisé dans le cadre de l’unité « Intégration et sécurité des bases de données » à l’école IPSSI.
+# Intégration et Sécurité des Bases de Données
 
 ## 📚 Objectif
 
@@ -67,3 +65,15 @@ Développer une application sécurisée de gestion d'abonnements à une salle de
 cd backend
 npm install
 node index.js
+```
+---
+
+## 🤖 Auteur
+
+**Geoffrey Rouvel**  
+Étudiant à l’IPSSI | Administrateur Systèmes & Réseaux  
+GitHub : [@RgGeolll](https://github.com/RgGeolll)
+
+---
+
+🎓 Projet réalisé dans le cadre du module **Integration et sécurité des bases de données** – Mastère Cybersécurité & Cloudcomputing.
