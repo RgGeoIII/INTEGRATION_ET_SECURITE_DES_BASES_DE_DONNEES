@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const token = localStorage.getItem("token");
-
     if (!token) {
         window.location.href = "connexion.html";
         return;
@@ -8,25 +7,28 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
         const response = await fetch("http://192.168.4.8:3000/api/profil", {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
+            headers: { Authorization: `Bearer ${token}` },
         });
 
-        if (!response.ok) {
-            throw new Error("Token invalide");
-        }
+        if (!response.ok) throw new Error("Token invalide");
 
         const user = await response.json();
-        console.log("Connecté en tant que :", user.email);
+        console.log("Utilisateur connecté :", user);
 
-        const prenomSpan = document.querySelector(".highlight");
-        if (prenomSpan && user.prenom) {
-            prenomSpan.textContent = user.prenom;
-        }
+        const span = document.querySelector(".highlight");
+        if (span) span.textContent = user.prenom;
+
+        const emailP = document.getElementById("email");
+        if (emailP) emailP.textContent = "Email : " + user.email;
+
     } catch (err) {
-        console.error("Erreur de récupération du profil :", err);
+        console.error("Erreur de session :", err);
         localStorage.removeItem("token");
         window.location.href = "connexion.html";
     }
 });
+
+function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "connexion.html";
+}

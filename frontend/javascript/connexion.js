@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector("form");
+    const form = document.getElementById("loginForm");
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -8,24 +8,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const password = form.password.value.trim();
 
         try {
-            const response = await fetch("http://192.168.4.8:3000/api/login", {
+            const res = await fetch("http://192.168.4.8:3000/api/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
             });
 
-            if (!response.ok) {
-                alert("Identifiants incorrects !");
-                return;
+            const data = await res.json();
+            console.log("Réponse API :", data);
+
+            if (res.ok && data.token) {
+                localStorage.setItem("token", data.token);
+                window.location.href = "membre.html";
+            } else {
+                alert("Email ou mot de passe incorrect");
             }
-
-            const { token } = await response.json();
-
-            localStorage.setItem("token", token);
-            window.location.href = "membre.html"; // Redirection après succès
         } catch (err) {
             console.error("Erreur lors de la connexion :", err);
-            alert("Une erreur est survenue. Veuillez réessayer.");
+            alert("Une erreur s'est produite.");
         }
     });
 });
