@@ -13,9 +13,9 @@
     <header>
       <div class="logo">CROCOGYM</div>
       <nav>
-        <a href="#">Trouver un club</a>
+        <a href="#villes-cartes">Trouver un club</a>
         <a href="frontend/html/tarifs.html">Tarifs</a>
-        <a href="#">Installations</a>
+        <a href="frontend/html/panier.html">Panier</a>
         <a href="frontend/html/connexion.html">Connexion</a>
         <a class="btn-purple" href="frontend/html/inscription.html">S’inscrire</a>
       </nav>
@@ -25,9 +25,12 @@
     <section class="hero">
     <div class="hero-text">
       <h1>Crocogym</h1>
-      <h1>Profite de 4 semaines<span>offertes* (Ca va zooker)</span></h1>
-      <p>Un café +1 Crocobag offert à l'inscription ! Des petites douceurs qui font votre bonheur ! 😉</p>
-      <p id="offre_condition">Offre soumise à condition d'avoir un style de femmes métissées</p>
+      <h1>Profite de 4 semaines <span>offertes* (Ca va zooker)</span></h1>
+      <div class="offre-bonus">
+        <p class="ligne1">🎁 Un café +1 Crocobag offert à l'inscription !</p>
+        <p class="ligne2">Des petites douceurs qui font votre bonheur ! 😉</p>
+        <p class="condition">*Offre soumise à condition d'avoir un style de femmes correcte (Ana DE ARMAS par ex.)</p>
+      </div>
       <div class="buttons">
         <a href="/frontend/html/inscription.html" class="btn-purple">Inscris-toi maintenant</a>
         <a href="frontend/html/tarifs.html" class="btn-white">Voir les prix</a>
@@ -55,17 +58,29 @@
     </section>
 
     <!-- Trouver -->
-    <section class="trouver">
-      <h2>Trouve ton club</h2>
-      <input type="text" placeholder="Rechercher une ville..." />
-      <div class="villes">
-        <span>Paris</span>
-        <span>Marseille</span>
-        <span>Lyon</span>
-        <span>Lille</span>
-        <span>Nantes</span>
+    <section id="villes-cartes">
+    <div class="carte-ville" style="background-image: url('frontend/images/paris.png')">
+        <h2><span class="dot"></span>PRS</h2>
+        <p>Paris</p>
+      </div>
+      <div class="carte-ville" style="background-image: url('frontend/images/poudlard.png')">
+        <h2><span class="dot"></span>POU</h2>
+        <p>Poudlard</p>
+      </div>
+      <div class="carte-ville" style="background-image: url('frontend/images/crocodilopolis.png')">
+        <h2><span class="dot"></span>CRK</h2>
+        <p>Crocodilopolis</p>
+      </div>
+      <div class="carte-ville" style="background-image: url('frontend/images/monaco.png')">
+        <h2><span class="dot"></span>MNC</h2>
+        <p>Monaco</p>
+      </div>
+      <div class="carte-ville" style="background-image: url('frontend/images/bikinibottom.png')">
+        <h2><span class="dot"></span>BBT</h2>
+        <p>Bikini Bottom</p>
       </div>
     </section>
+
 
     <!-- Footer -->
     <footer>
