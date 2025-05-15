@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("loginForm");
 
     form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // ⚠️ évite le rechargement de la page
 
         const email = form.email.value;
         const password = form.password.value;
@@ -14,16 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify({ email, password }),
             });
 
-            if (!response.ok) throw new Error("Échec de la connexion");
+            if (!response.ok) {
+                alert("Email ou mot de passe incorrect !");
+                return;
+            }
 
             const data = await response.json();
             localStorage.setItem("token", data.token);
 
-            // Redirection vers l’espace membre
+            // 🔁 Redirection vers la page membre
             window.location.href = "membre.html";
         } catch (err) {
-            alert("Email ou mot de passe incorrect !");
-            console.error(err);
+            console.error("Erreur lors de la connexion :", err);
+            alert("Erreur réseau ou serveur.");
         }
     });
 });
