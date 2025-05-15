@@ -66,6 +66,43 @@ cd backend
 npm install
 node index.js
 ```
+
+### 1. 🛠️ FrontEnd (sur VM 2303)
+
+```bash
+cd <repertoire/vers/frontend>
+sudo apt install npm
+npx serve .
+```
+---
+
+## 🔮 Améliorations et évolutions futures
+Ce projet pourrait être enrichi avec de nombreuses fonctionnalités supplémentaires si plus de temps était disponible :
+
+## 👤 Gestion des utilisateurs
+- Système de déconnexion avec suppression du token.
+- Affichage complet des données personnelles depuis le backend.
+- Modification du profil (email, mot de passe, avatar, etc.).
+
+## 🧾 Paiements et abonnements
+- Intégration d'une plateforme de paiement (ex : Stripe).
+- Visualisation et historique des paiements.
+- Souscription directe à un abonnement via l'interface.
+
+## 🏋️ Activités & visites
+- Ajout automatique dans la table historique_visites lors de la connexion.
+- Statistiques dynamiques des visites par semaine, mois, etc.
+- Calendrier des séances et suivi des performances.
+
+## 📊 Tableau de bord avancé
+- Dashboard interactif avec graphiques (visites, paiements...).
+- Interface admin avec gestion des utilisateurs et des clubs.
+
+## 🔐 Sécurité renforcée
+- Expiration automatique du JWT (refresh token).
+- Gestion des rôles (admin, coach, utilisateur).
+- Logs des connexions et alertes sécurité.
+
 ---
 
 ## 🤖 Auteur
