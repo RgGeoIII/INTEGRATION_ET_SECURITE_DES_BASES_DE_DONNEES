@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("loginForm");
+    const form = document.querySelector("form");
 
     form.addEventListener("submit", async (e) => {
-        e.preventDefault(); // ⚠️ évite le rechargement de la page
+        e.preventDefault();
 
-        const email = form.email.value;
-        const password = form.password.value;
+        const email = form.email.value.trim();
+        const password = form.password.value.trim();
 
         try {
             const response = await fetch("http://192.168.4.8:3000/api/login", {
@@ -15,18 +15,17 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (!response.ok) {
-                alert("Email ou mot de passe incorrect !");
+                alert("Identifiants incorrects !");
                 return;
             }
 
-            const data = await response.json();
-            localStorage.setItem("token", data.token);
+            const { token } = await response.json();
 
-            // 🔁 Redirection vers la page membre
-            window.location.href = "membre.html";
+            localStorage.setItem("token", token);
+            window.location.href = "membre.html"; // Redirection après succès
         } catch (err) {
             console.error("Erreur lors de la connexion :", err);
-            alert("Erreur réseau ou serveur.");
+            alert("Une erreur est survenue. Veuillez réessayer.");
         }
     });
 });
