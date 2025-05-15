@@ -1,71 +1,70 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Espace Membre - Crocogym</title>
-        <link rel="stylesheet" href="../css/membre.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Espace Membre - Crocogym</title>
+    <link rel="stylesheet" href="../css/membre.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+    <script src="../javascript/membre.js" defer></script>
+</head>
+<body>
+<div class="dashboard">
+    <!-- Barre latérale -->
+    <aside class="sidebar">
+        <h2>CROCOGYM 🐊</h2>
+        <nav>
+            <a href="#" class="active">Aperçu</a>
+            <a href="#">Mon abonnement</a>
+            <a href="#">Mes paiements</a>
+            <a href="#">Mes infos</a>
+            <a href="#">Historique de visites</a>
+            <a href="#">Offres & Avantages</a>
+            <a href="#">Mes séances</a>
+            <a href="#">Entraîne-toi avec d'autres</a>
+            <hr />
+            <a href="../../index.html">Retour à l'accueil</a>
+            <a href="#" onclick="logout()">Se déconnecter</a>
+        </nav>
+    </aside>
 
-        <div class="dashboard">
-            <!-- Barre latérale -->
-            <aside class="sidebar">
-                <h2>CROCOGYM 🐊</h2>
-                <nav>
-                    <a href="#" class="active">Aperçu</a>
-                    <a href="#">Mon abonnement</a>
-                    <a href="#">Mes paiements</a>
-                    <a href="#">Mes infos</a>
-                    <a href="#">Historique de visites</a>
-                    <a href="#">Offres & Avantages</a>
-                    <a href="#">Mes séances</a>
-                    <a href="#">Entraîne-toi avec d'autres</a>
-                    <hr />
-                    <a href="../../index.html">Retour à l'accueil</a>
-                    <a href="#">Se déconnecter</a>
-                </nav>
-            </aside>
+    <!-- Contenu principal -->
+    <main class="content">
+        <section class="welcome-section">
+            <div class="text">
+                <h1>Bienvenue <span id="prenom" class="highlight">...</span> !</h1>
+                <p id="email">Chargement des infos...</p>
+            </div>
+            <img src="../images/crocogym_sport_illu.png" alt="Illustration Croco" />
+        </section>
 
-            <!-- Contenu principal -->
-            <main class="content">
-                <section class="welcome-section">
-                    <div class="text">
-                    <h1>Bienvenue <span class="highlight">CrocoMaster</span> !</h1>
-                    <p>Accède à ton espace personnel, gère ton abonnement et fais des croc-performances !</p>
-                    </div>
-                    <img src="../images/crocogym_sport_illu.png" alt="Illustration Croco" />
-                </section>
-
-                <section class="stats">
-                    <h2>Statistiques d'activité</h2>
-                    <div class="cards">
-                        <div class="card">
-                            <p class="label">Total</p>
-                            <p class="number">272</p>
-                            <p class="unit">Visites</p>
-                        </div>
-                        <div class="card">
-                            <p class="label">Semaine passée</p>
-                            <p class="number">4</p>
-                            <p class="unit">Visites</p>
-                        </div>
-                        <div class="card">
-                            <p class="label">Cette semaine</p>
-                            <p class="number">1</p>
-                            <p class="unit">Visite</p>
-                        </div>
-                        <div class="card">
-                            <p class="label">Séances suivies</p>
-                            <p class="number">5</p>
-                            <p class="unit">Entraînements</p>
-                        </div>
-                    </div>
-                    <a href="#" class="link">Voir l'historique complet →</a>
-                </section>
-            </main>
-        </div>
-
-    </body>
+        <section class="stats">
+            <h2>Statistiques d'activité</h2>
+            <div class="cards">
+                <div class="card">
+                    <p class="label">Total</p>
+                    <p class="number">272</p>
+                    <p class="unit">Visites</p>
+                </div>
+                <div class="card">
+                    <p class="label">Semaine passée</p>
+                    <p class="number">4</p>
+                    <p class="unit">Visites</p>
+                </div>
+                <div class="card">
+                    <p class="label">Cette semaine</p>
+                    <p class="number">1</p>
+                    <p class="unit">Visite</p>
+                </div>
+                <div class="card">
+                    <p class="label">Séances suivies</p>
+                    <p class="number">5</p>
+                    <p class="unit">Entraînements</p>
+                </div>
+            </div>
+            <a href="#" class="link">Voir l'historique complet →</a>
+        </section>
+    </main>
+</div>
+</body>
 </html>
