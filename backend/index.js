@@ -93,6 +93,23 @@ app.get('/api/profil', authenticateToken, async (req, res) => {
     }
 });
 
+//Déconnexion(simple)
+app.post('/api/logout', authenticateToken, (req, res) => {
+    res.json({ message: 'Déconnexion réussie, veuillez supprimer le token côté client.' });
+});
+
+// Suppression du profil utilisateur
+app.delete('/api/profil', authenticateToken, async (req, res) => {
+    try {
+        await db.query('DELETE FROM profils WHERE utilisateur_id = ?', [req.user.id]);
+        await db.query('DELETE FROM utilisateurs WHERE id = ?', [req.user.id]);
+        res.json({ message: 'Compte utilisateur supprimé avec succès' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Erreur lors de la suppression du compte' });
+    }
+});
+
 // Lancer le serveur
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
