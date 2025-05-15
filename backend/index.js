@@ -99,7 +99,7 @@ app.post('/api/logout', authenticateToken, (req, res) => {
     res.json({ message: 'Déconnexion réussie, veuillez supprimer le token côté client.' });
 });
 
-// Suppression du profil utilisateur
+// Suppression du compte
 app.delete('/api/delete', authenticateToken, async (req, res) => {
     try {
         await db.query('DELETE FROM profils WHERE utilisateur_id = ?', [req.user.id]);
@@ -110,7 +110,6 @@ app.delete('/api/delete', authenticateToken, async (req, res) => {
         res.status(500).json({ error: 'Erreur lors de la suppression du compte' });
     }
 });
-
 
 // Lancer le serveur
 const PORT = process.env.PORT || 3000;

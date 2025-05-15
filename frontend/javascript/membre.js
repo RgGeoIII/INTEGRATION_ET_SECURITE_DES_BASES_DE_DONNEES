@@ -29,34 +29,35 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function deleteProfile() {
-    if (!confirm("Es-tu sûr de vouloir supprimer ton profil ? Cette action est irréversible.")) {
-        return;
-    }
+    if (!confirm("Es-tu sûr de vouloir supprimer ton profil ?")) return;
 
     const token = localStorage.getItem("token");
+    if (!token) {
+        alert("Non authentifié");
+        return;
+    }
 
     fetch("http://192.168.4.8:3000/api/delete", {
         method: "DELETE",
         headers: {
-            "Authorization": `Bearer ${token}`
+            Authorization: `Bearer ${token}`
         }
     })
-        .then(async (response) => {
-            if (!response.ok) {
-                const error = await response.json();
-                alert("Erreur : " + (error.message || "Impossible de supprimer le profil."));
-                return;
+        .then(async (res) => {
+            if (!res.ok) {
+                const err = await res.json();
+                throw new Error(err.error || "Erreur inconnue");
             }
-
+            alert("Compte supprimé !");
             localStorage.removeItem("token");
-            alert("Ton compte a été supprimé. À bientôt !");
             window.location.href = "../../index.html";
         })
-        .catch((error) => {
-            console.error("Erreur réseau :", error);
-            alert("Une erreur s'est produite lors de la suppression.");
+        .catch((err) => {
+            console.error("Erreur :", err);
+            alert("Suppression échouée : " + err.message);
         });
 }
+
 
 
 function logout() {
