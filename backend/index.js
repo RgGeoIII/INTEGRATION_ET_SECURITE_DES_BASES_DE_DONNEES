@@ -6,6 +6,7 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -99,7 +100,7 @@ app.post('/api/logout', authenticateToken, (req, res) => {
 });
 
 // Suppression du profil utilisateur
-app.delete('/api/profil', authenticateToken, async (req, res) => {
+app.delete('/api/delete', authenticateToken, async (req, res) => {
     try {
         await db.query('DELETE FROM profils WHERE utilisateur_id = ?', [req.user.id]);
         await db.query('DELETE FROM utilisateurs WHERE id = ?', [req.user.id]);
@@ -109,6 +110,7 @@ app.delete('/api/profil', authenticateToken, async (req, res) => {
         res.status(500).json({ error: 'Erreur lors de la suppression du compte' });
     }
 });
+
 
 // Lancer le serveur
 const PORT = process.env.PORT || 3000;

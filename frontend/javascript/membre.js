@@ -28,37 +28,36 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-async function deleteProfile() {
+function deleteProfile() {
     if (!confirm("Es-tu sûr de vouloir supprimer ton profil ? Cette action est irréversible.")) {
         return;
     }
 
     const token = localStorage.getItem("token");
 
-    try {
-        const response = await fetch("http://192.168.4.8:3000/api/delete", {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            alert("Erreur : " + (errorData.message || "Impossible de supprimer le profil."));
-            return;
+    fetch("http://192.168.4.8:3000/api/delete", {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${token}`
         }
+    })
+        .then(async (response) => {
+            if (!response.ok) {
+                const error = await response.json();
+                alert("Erreur : " + (error.message || "Impossible de supprimer le profil."));
+                return;
+            }
 
-        // Suppression réussie
-        localStorage.removeItem("token");
-        alert("Ton compte a été supprimé. À bientôt !");
-        window.location.href = "../../index.html";
-    } catch (error) {
-        console.error("Erreur réseau :", error);
-        alert("Une erreur s'est produite lors de la suppression.");
-    }
+            localStorage.removeItem("token");
+            alert("Ton compte a été supprimé. À bientôt !");
+            window.location.href = "../../index.html";
+        })
+        .catch((error) => {
+            console.error("Erreur réseau :", error);
+            alert("Une erreur s'est produite lors de la suppression.");
+        });
 }
+
 
 function logout() {
     localStorage.removeItem("token");
