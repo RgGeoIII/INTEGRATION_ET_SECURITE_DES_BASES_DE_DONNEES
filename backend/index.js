@@ -1,13 +1,18 @@
-// backend/index.js
+// Permet de charger les variables d'environnement depuis le fichier .env
 require('dotenv').config();
+
+// Importation des mofules nécéssaires
 const express = require('express');
 const mysql = require('mysql2/promise');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
+// Initialisation de l'application Express
 const app = express();
+// Middleware pour activer CORS
 app.use(cors());
+// Midleware pour parser le corps des requêtes en JSON
 app.use(express.json());
 
 // Configuration de la base de données
@@ -25,7 +30,9 @@ function authenticateToken(req, res, next) {
 
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
         if (err) return res.status(403).json({ error: 'Token invalide' });
+        // Ajoute les données du token à la requête
         req.user = user;
+        //Passe au middleware suivante
         next();
     });
 }
@@ -34,7 +41,10 @@ function authenticateToken(req, res, next) {
 app.post('/api/register', async (req, res) => {
     const { prenom, nom, email, password, date_naissance, genre, avatar_url } = req.body;
     try {
+        // Hashage du mot de passe
         const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Insertion dans la table utilisateurs
         const [result] = await db.query(
             'INSERT INTO utilisateurs (prenom, nom, email, mot_de_passe) VALUES (?, ?, ?, ?)',
             [prenom, nom, email, hashedPassword]
@@ -42,6 +52,7 @@ app.post('/api/register', async (req, res) => {
 
         const utilisateur_id = result.insertId;
 
+        // Insertion dans la table profils
         await db.query(
             'INSERT INTO profils (utilisateur_id, date_naissance, genre, avatar_url) VALUES (?, ?, ?, ?)',
             [utilisateur_id, date_naissance, genre, avatar_url]
@@ -59,19 +70,23 @@ app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
 
     try {
+        // Récupération de l'utilisateur par l'email
         const [rows] = await db.query('SELECT * FROM utilisateurs WHERE email = ?', [email]);
         if (rows.length === 0) return res.status(401).json({ error: 'Utilisateur non trouvé' });
 
         const user = rows[0];
+
+        // Vérification du mot de passe avec Bcrypt
         const isMatch = await bcrypt.compare(password, user.mot_de_passe);
         if (!isMatch) return res.status(401).json({ error: 'Mot de passe incorrect' });
 
+        // Génération d’un token JWT
         const token = jwt.sign(
             { id: user.id, email: user.email, role: user.type_utilisateur },
             process.env.JWT_SECRET,
             { expiresIn: '2h' }
         );
-
+        // Renvoie les infos utilisateur + profil
         res.json({ token });
     } catch (err) {
         console.error(err);
