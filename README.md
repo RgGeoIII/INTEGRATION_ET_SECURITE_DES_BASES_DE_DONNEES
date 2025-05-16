@@ -57,7 +57,8 @@ Développer une application sécurisée de gestion d'abonnements à une salle de
 
 ---
 
-## 🚀 Lancer le projet
+## 🚀 Lancer le projet!
+
 
 ### 1. 🛠️ Backend (sur VM 2302)
 
@@ -104,6 +105,12 @@ Ce projet pourrait être enrichi avec de nombreuses fonctionnalités supplément
 **Geoffrey Rouvel**  
 Étudiant à l’IPSSI | Administrateur Systèmes & Réseaux  
 GitHub : [@RgGeolll](https://github.com/RgGeolll)
+
+---
+
+## 🏗️ Architecture Logicielle
+
+![Architecture logicielle](https://github.com/user-attachments/assets/fa75522f-43da-40bb-94e6-4feccf4b995d)
 
 ---
 
