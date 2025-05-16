@@ -77,10 +77,9 @@ GitHub : [@RgGeolll](https://github.com/RgGeolll)
 
 ---
 
-## 🏢 Architecture Réseau
+## 🏗️ Architecture Logicielle
 
 ![Architecture logicielle](https://github.com/user-attachments/assets/fa75522f-43da-40bb-94e6-4feccf4b995d)
-
 
 --
 
