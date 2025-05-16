@@ -57,7 +57,8 @@ Développer une application sécurisée de gestion d'abonnements à une salle de
 
 ---
 
-## 🚀 Lancer le projet
+## 🚀 Lancer le projet![Architecture logicielle](https://github.com/user-attachments/assets/6b3c6108-45e3-4933-ab8d-7eabd9ffd71b)
+
 
 ### 1. 🛠️ Backend (sur VM 2302)
 
