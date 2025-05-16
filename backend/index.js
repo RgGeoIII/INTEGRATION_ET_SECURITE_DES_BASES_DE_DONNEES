@@ -6,7 +6,6 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -93,13 +92,6 @@ app.get('/api/profil', authenticateToken, async (req, res) => {
         res.status(500).json({ error: 'Erreur lors de la récupération du profil' });
     }
 });
-
-//Déconnexion(simple)
-app.post('/api/logout', authenticateToken, (req, res) => {
-    res.json({ message: 'Déconnexion réussie, veuillez supprimer le token côté client.' });
-});
-
-
 
 // Lancer le serveur
 const PORT = process.env.PORT || 3000;
