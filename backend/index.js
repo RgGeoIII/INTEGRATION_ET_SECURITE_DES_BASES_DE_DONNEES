@@ -6,11 +6,12 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Connexion à la base de données
+// Configuration de la base de données
 const db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -18,7 +19,7 @@ const db = mysql.createPool({
     database: process.env.DB_NAME
 });
 
-// Authentification JWT
+// Middleware d'authentification JWT
 function authenticateToken(req, res, next) {
     const token = req.headers['authorization']?.split(' ')[1];
     if (!token) return res.status(401).json({ error: 'Token manquant' });
@@ -30,7 +31,7 @@ function authenticateToken(req, res, next) {
     });
 }
 
-// Inscription
+// Inscription avec création du profil par défaut
 app.post('/api/register', async (req, res) => {
     const { prenom, nom, email, password, date_naissance, genre, avatar_url } = req.body;
     try {
@@ -39,6 +40,7 @@ app.post('/api/register', async (req, res) => {
             'INSERT INTO utilisateurs (prenom, nom, email, mot_de_passe) VALUES (?, ?, ?, ?)',
             [prenom, nom, email, hashedPassword]
         );
+
         const utilisateur_id = result.insertId;
 
         await db.query(
@@ -46,10 +48,10 @@ app.post('/api/register', async (req, res) => {
             [utilisateur_id, date_naissance, genre, avatar_url]
         );
 
-        res.status(201).json({ message: 'Utilisateur créé avec succès' });
+        res.status(201).json({ message: 'Utilisateur et profil créés avec succès' });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: 'Erreur lors de l’inscription' });
+        res.status(500).json({ error: 'Erreur lors de la création du compte' });
     }
 });
 
@@ -78,15 +80,12 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
-// Récupération du profil
+// Récupération du profil de l'utilisateur
 app.get('/api/profil', authenticateToken, async (req, res) => {
     try {
         const [utilisateur] = await db.query(
-            `SELECT u.id, u.prenom, u.nom, u.email, u.type_utilisateur,
-              p.date_naissance, p.genre, p.avatar_url
-       FROM utilisateurs u
-       JOIN profils p ON u.id = p.utilisateur_id
-       WHERE u.id = ?`, [req.user.id]
+            'SELECT u.id, u.prenom, u.nom, u.email, u.type_utilisateur, p.date_naissance, p.genre, p.avatar_url FROM utilisateurs u JOIN profils p ON u.id = p.utilisateur_id WHERE u.id = ?',
+            [req.user.id]
         );
         res.json(utilisateur[0]);
     } catch (err) {
@@ -95,19 +94,15 @@ app.get('/api/profil', authenticateToken, async (req, res) => {
     }
 });
 
-// Supprimer le compte
-app.delete('/api/delete', authenticateToken, async (req, res) => {
-    try {
-        await db.query('DELETE FROM profils WHERE utilisateur_id = ?', [req.user.id]);
-        await db.query('DELETE FROM utilisateurs WHERE id = ?', [req.user.id]);
-        res.json({ message: 'Compte supprimé avec succès' });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Erreur lors de la suppression du compte' });
-    }
+//Déconnexion(simple)
+app.post('/api/logout', authenticateToken, (req, res) => {
+    res.json({ message: 'Déconnexion réussie, veuillez supprimer le token côté client.' });
 });
 
+
+
+// Lancer le serveur
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`✅ Backend démarré sur le port ${PORT}`);
+    console.log(`\u2705 Serveur backend démarré sur le port ${PORT}`);
 });
