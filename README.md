@@ -57,7 +57,7 @@ Développer une application sécurisée de gestion d'abonnements à une salle de
 
 ---
 
-## 🚀 Lancer le projet![Architecture logicielle](https://github.com/user-attachments/assets/6b3c6108-45e3-4933-ab8d-7eabd9ffd71b)
+## 🚀 Lancer le projet!
 
 
 ### 1. 🛠️ Backend (sur VM 2302)
@@ -76,5 +76,11 @@ node index.js
 GitHub : [@RgGeolll](https://github.com/RgGeolll)
 
 ---
+
+## 🏢 Architecture Réseau
+
+[Architecture logicielle](https://github.com/user-attachments/assets/6b3c6108-45e3-4933-ab8d-7eabd9ffd71b)
+
+--
 
 🎓 Projet réalisé dans le cadre du module **Integration et sécurité des bases de données** – Mastère Cybersécurité & Cloudcomputing.
