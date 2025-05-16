@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Vérification du token dès le chargement
     if (!token) {
-        console.warn("Aucun token trouvé, redirection vers connexion.html");
+        console.warn("Aucun token trouvé,redirection vers connexion.html");
         window.location.href = "connexion.html";
         return;
     }
