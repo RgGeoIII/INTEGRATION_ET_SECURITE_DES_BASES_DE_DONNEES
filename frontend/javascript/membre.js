@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
         const response = await fetch("http://192.168.4.8:3000/api/profil", {
-            headers: { Authorization: `Bearer ${token}` },
+            headers: { Authorization: `Bearer ${token}` }
         });
 
         if (!response.ok) throw new Error("Token invalide");
@@ -15,18 +15,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         const user = await response.json();
         console.log("Utilisateur connecté :", user);
 
-        const span = document.querySelector(".highlight");
-        if (span) span.textContent = user.prenom;
-
-        const emailP = document.getElementById("email");
-        if (emailP) emailP.textContent = "Email : " + user.email;
-
+        document.querySelector(".highlight").textContent = user.prenom;
+        document.getElementById("email").textContent = "Email : " + user.email;
     } catch (err) {
-        console.error("Erreur de session :", err);
+        console.error("Erreur profil :", err);
         localStorage.removeItem("token");
         window.location.href = "connexion.html";
     }
 });
+
+function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "connexion.html";
+}
 
 function deleteProfile() {
     if (!confirm("Es-tu sûr de vouloir supprimer ton profil ?")) return;
@@ -40,27 +41,20 @@ function deleteProfile() {
     fetch("http://192.168.4.8:3000/api/delete", {
         method: "DELETE",
         headers: {
-            Authorization: `Bearer ${token}`
+            "Authorization": `Bearer ${token}`
         }
     })
-        .then(async (res) => {
+        .then(async res => {
             if (!res.ok) {
                 const err = await res.json();
                 throw new Error(err.error || "Erreur inconnue");
             }
-            alert("Compte supprimé !");
+            alert("Ton compte a été supprimé.");
             localStorage.removeItem("token");
             window.location.href = "../../index.html";
         })
-        .catch((err) => {
-            console.error("Erreur :", err);
-            alert("Suppression échouée : " + err.message);
+        .catch(err => {
+            console.error("Suppression échouée :", err);
+            alert("Erreur lors de la suppression.");
         });
-}
-
-
-
-function logout() {
-    localStorage.removeItem("token");
-    window.location.href = "connexion.html";
 }
