@@ -111,8 +111,8 @@ GitHub : [@RgGeolll](https://github.com/RgGeolll)
 ## 🤖 Collaborateur
 
 **Xavier ROCHER**  
-Étudiant à l’IPSSI | Administrateur Systèmes & Réseaux
-Github : [@Xavier-ROCHER](https://github.com/Xavier-ROCHER)
+Étudiant à l’IPSSI | Administrateur Systèmes & Réseaux  
+GitHub : [@Xavier-ROCHER](https://github.com/Xavier-ROCHER)
 
 ---
 
